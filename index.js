@@ -20,6 +20,7 @@ app.post('/get-lyrics', async (req, res) =>{
 
     try{
         // Example: https://api.lyrics.ovh/v1/Ariana Grande/No Tears Left To Cry
+        // Rihanna We Found Love
         const response = await axios.get(`https://api.lyrics.ovh/v1/${artist}/${song}`);
         const lyrics = response.data.lyrics;
         res.render('index.ejs', { lyrics: lyrics, artist: artist, song: song });
