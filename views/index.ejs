@@ -21,5 +21,11 @@
             <button type="submit">Get Lyrics</button>
         </form>
     </div>
+    <% if (locals.lyrics) { %>
+        <div class="lyrics-container">
+            <h2>Lyrics:</h2>
+            <pre><%= locals.lyrics %></pre>
+        </div>
+    <% } %>
 </body>
 </html> 

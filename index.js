@@ -12,7 +12,22 @@ app.get('/', (req, res)=> {
   res.render('index.ejs');
 });
 
+app.post('/get-lyrics', async (req, res) =>{
+    const artist = req.body.artist;
+    const song = req.body.song;
 
+    console.log(artist, song);
+
+    try{
+        // Example: https://api.lyrics.ovh/v1/Ariana Grande/No Tears Left To Cry
+        const response = await axios.get(`https://api.lyrics.ovh/v1/${artist}/${song}`);
+        const lyrics = response.data.lyrics;
+        res.render('index.ejs', { lyrics: lyrics, artist: artist, song: song });
+    }catch(error){
+        console.error(error);
+        res.render('index.ejs', { lyrics: "Lyrics not found."} );
+    }
+});
 
 
 
